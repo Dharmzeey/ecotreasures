@@ -1,0 +1,7 @@
+__pycache__
+*.sqlite3
+*.pyc
+media
+migrations/
+plactic_type/
+categories/

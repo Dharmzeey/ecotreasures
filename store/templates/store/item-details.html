@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% block title %}
+<title>{{ item }} | Eco Treasure</title>
+{% endblock %}
+{% block content %}
+<div>
+  <h1>{{ item.title }}</h1>
+  <div class="w-96">
+    <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}">
+  </div>
+  <div class="flex gap-4 pt-10">
+    {% for i in item.item_image.all %}
+    <div class="w-72">
+      <img src="{{ i.image.url }}" alt="{{ item.title }}">
+    </div>
+    {% endfor %}
+  </div>
+  <div class="leading-8">
+    <h2 class="text-2xl font-bold">Information</h2>
+    <div class="flex">Description: <p>{{ item.description }}</p></div>
+    <div><span>Category:</span> <span>{{ item.category }}</span></div>
+    <div class="flex"><span>Plastic Type:</span> <img class="img_plastic_type" src="{{ item.type.image.url }}" alt="{{ item.type }}"></div>
+    <div><span>Price:</span><span>{{ item.price }}</span></div>
+  </div>
+</div>
+{% endblock %}
