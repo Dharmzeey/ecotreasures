@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% block title %}
+<title>Exhibition Rooms | Eco Treasure</title>
+{% endblock %}
+{% block content %}
+<h1 class="text-center text-2xl font-semibold">Exhibition Rooms</h1>
+<div class="flex flex-col gap-5">
+  {% for place in exhibition_places %}
+  <div>
+    <h2>{{ place.name }}</h2>
+    <h2>Location: {{ place.location }}</h2>
+  </div>
+  <div class="grid grid-cols-5 gap-3">
+    <div class="w-full col-span-2">
+      <img src="{{ place.image.url }}" alt="{{ place.name }}">
+    </div>
+    <div class="col-span-3 leading-8">{{ place.description }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

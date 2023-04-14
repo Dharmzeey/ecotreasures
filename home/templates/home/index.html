@@ -8,7 +8,7 @@
     <h1 class="pb-3 text-center text-2xl">Categories</h1>
     <div class="flex justify-center gap-16">
       {% for category in categories %}
-      <a href="">
+      <a class="rounded-full" href="{% url 'home' category=category %}">
         <div class="flex flex-col">
           <div class="img-wrapper w-[10rem] h-[10rem]">
             <img class="rounded-full w-full h-full object-cover" src="{{ category.image.url }}" alt="{{ category }}">
@@ -31,6 +31,27 @@
     <h1 class="pb-3 text-center text-2xl">Upcycled Items</h1>
     <div class="flex gap-6">
       {% for item in upcycled %}
+      <a href="{% url 'item:item_details' item.id %}">
+        <h1>{{ item.title }}</h1>
+        <div>
+          <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}">
+        </div>
+        <div class="pt-2 flex gap-3">
+          <span>{{ item.category }}</span>
+          <img class="img_plastic_type" src="{{ item.type.image.url }}" alt="{{ item.type }}">
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+  </section>
+  {% endif %}
+
+  {% if filtered_items %}
+  <section>
+    <h1 class="pb-3 text-center text-2xl">{{ category }}</h1>
+    <div class="flex gap-6">
+      {% for item in filtered_items %}
       <a href="{% url 'item:item_details' item.id %}">
         <h1>{{ item.title }}</h1>
         <div>

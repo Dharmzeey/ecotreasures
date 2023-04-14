@@ -7,7 +7,7 @@
 } */
 
 .nav_link {
-  @apply underline;
+  @apply hover:underline;
 }
 
 .img_plastic_type {

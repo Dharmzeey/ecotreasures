@@ -13,3 +13,12 @@ class HomeView(View):
     return render(request, self.template_name, context)
 home = HomeView.as_view()
 
+
+class CategoryFilter(View):
+  template_name = "home/index.html"
+  def get(self, request, category):
+    categories = Category.objects.all()
+    filtered_items = Item.objects.filter(category__name=category)
+    context = {"filtered_items": filtered_items, "categories": categories, "category": category}
+    return render(request, self.template_name, context)
+category_filter = CategoryFilter.as_view()
