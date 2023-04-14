@@ -5,11 +5,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("home.urls")),
-    # path("", include("user.urls")),
-    path("", include("exhibition.urls")),
     path("item/", include("store.urls")),
-    path("blog/", include("blog.urls")),
+    path("blog/", include("blog.urls", namespace="blog")),
+    path("exhibition/", include("exhibition.urls")),
+    path("", include("home.urls")),
+    # path("", include("user.urls")),   
+
     
     path("__reload__/", include("django_browser_reload.urls")),
 ]

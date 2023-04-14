@@ -22,29 +22,29 @@ class BlogDetailsView(DetailView):
         return data
 blog_details = BlogDetailsView.as_view()
 
-# class CreateBlog(AdminRequiredMixin, CreateView):
-#   model = Blog
-#   template_name = "blog/blog_form.html"
-#   success_url = reverse_lazy("blog:blogs")
-#   fields = ["title", "image", "body"]
-# create_blog = CreateBlog.as_view()
+class CreateBlog(CreateView):
+  model = Blog
+  template_name = "blog/blog-form.html"
+  success_url = reverse_lazy("blog:blogs")
+  fields = ["title", "image", "body"]
+create_blog = CreateBlog.as_view()
   
-# class UpdateBlog(AdminRequiredMixin, UpdateView):
-#   model = Blog
-#   fields = ["title", "image", "body"]
-#   template_name = "blog/blog_form.html"
-#   success_url = reverse_lazy("blog:blogs")
+class UpdateBlog(UpdateView):
+  model = Blog
+  fields = ["title", "image", "body"]
+  template_name = "blog/blog-form.html"
+  success_url = reverse_lazy("blog:blogs")
   
-#   def get_success_url(self):
-#     if 'slug' in self.kwargs:
-#       slug = self.kwargs['slug']
-#     else:
-#       return reverse_lazy("blog:blogs")
-#     return reverse('blog:blog_details', kwargs={'slug': slug})
-# update_blog = UpdateBlog.as_view()
+  def get_success_url(self):
+    if 'slug' in self.kwargs:
+      slug = self.kwargs['slug']
+    else:
+      return reverse_lazy("blog:blogs")
+    return reverse('blog:blog_details', kwargs={'slug': slug})
+update_blog = UpdateBlog.as_view()
   
-# class DeleteBlog(AdminRequiredMixin, DeleteView):
-#   model = Blog
-#   success_url = reverse_lazy("blog:blogs")
-#   template_name = "blog/delete_blog.html"
-# delete_blog = DeleteBlog.as_view()
+class DeleteBlog(DeleteView):
+  model = Blog
+  success_url = reverse_lazy("blog:blogs")
+  template_name = "blog/delete-blog.html"
+delete_blog = DeleteBlog.as_view()

@@ -4,10 +4,10 @@
 {% endblock %}
 {% block content %}
 
-<section class="bg-gray-200 tracking-wider leading-6 md:leading-8">
-  <div class="container mx-auto">
-    <div class="w-4/5 mx-auto pt-20">
-      <h1 title="AB Farm Blog" class="uppercase font-bold text-xl">BLOG</h1>
+<section class="tracking-wider leading-6 md:leading-8">
+  <div class="mx-auto">
+    <div class="w-4/5 mx-auto pt-10">
+      <h1 title="AB Farm Blog" class="uppercase font-bold text-xl text-center">BLOG</h1>
       {% for blog_item in blog %}
       <div class="card min-h-[14vh] p-3">
         <h1>{{ blog_item.title }}</h1>
@@ -23,8 +23,8 @@
           <a class="btn" href="{% url 'blog:blog_details' blog_item.slug %}">Continue Reading</a>
         </div>
         <div
-          class="hidden w-full h-full absolute top-0 md:flex justify-center items-center md:opacity-0 md:hover:opacity-100  transition-all delay-100">
-          <a href="{% url 'blog:blog_details' blog_item.slug %}" class="border p-3 border-black z-20 md:hover:bg-black md:hover:text-white">READ MORE</a>
+          class="transition-all delay-100">
+          <a href="{% url 'blog:blog_details' blog_item.slug %}" class="border p-2 border-black z-20 md:hover:bg-black md:hover:text-white">READ MORE</a>
         </div>
       </div>
 
